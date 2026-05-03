@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-warning">
+                <h4 class="mb-0">🍽️ Случайная идея блюда (от TheMealDB)</h4>
+            </div>
+            <div class="card-body text-center">
+                {% if meal %}
+                    <h3>{{ meal.strMeal }}</h3>
+                    <img src="{{ meal.strMealThumb }}" class="img-fluid rounded mb-3" alt="{{ meal.strMeal }}" style="max-height: 300px;">
+                    <p><strong>Категория:</strong> {{ meal.strCategory }} | <strong>Кухня:</strong> {{ meal.strArea }}</p>
+                    <a href="{{ meal.strSource }}" target="_blank" class="btn btn-primary">Смотреть полный рецепт</a>
+                    <button onclick="location.reload()" class="btn btn-secondary">Показать другое</button>
+                {% else %}
+                    <p>Не удалось загрузить случайное блюдо. Попробуйте позже.</p>
+                    <button onclick="location.reload()" class="btn btn-primary">Обновить</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
